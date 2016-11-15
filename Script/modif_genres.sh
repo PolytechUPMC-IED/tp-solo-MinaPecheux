@@ -36,7 +36,7 @@ else
 	    # on récupère le numéro du genre
 	    num="`id3v2 -L | grep \"$dir\" | cut -d : -f 1`"
 	    res=`id3v2 $destdir/$dir/$file -g $num`
-	    if [ res -neq 0 ]; then
+	    if [ res -ne 0 ]; then
 		echo "Erreur."
 	    else
 		echo "Fichier modifié : $file."
@@ -45,5 +45,8 @@ else
     done
 
     # on recompresse l'archive
-    tar czvf music-new.tgz $destdir
+    tar czvf music.tgz $destdir
+
+    # on supprime les fichiers intermédiaires
+    rm -r $destdir -f
 fi

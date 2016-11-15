@@ -13,6 +13,7 @@ else
 
     # on récupère la liste
     list_ar=`ls $1 | grep .tgz`
+    # pour chaque archive, on décompresse
     for i in $list_ar
     do
 	tar xzvf $1/$i
